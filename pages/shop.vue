@@ -16,6 +16,7 @@ export default {
   computed: {
     ...mapGetters({
       productsList: 'catalog/productsList',
+      selectedProductsList: 'cart/selectedProductsList',
     }),
   },
   mounted() {

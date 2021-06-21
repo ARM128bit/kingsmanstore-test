@@ -19,9 +19,11 @@ export const mutations = {
     state.productsList = [...payload]
   },
   addToCart: (state, payload) => {
-    const _i = state.selectedProductsList.indexOf(({ id }) => {
-      return id === payload
-    })
+    const _i = state.selectedProductsList
+      .map((item) => {
+        return item.id
+      })
+      .indexOf(payload)
     if (_i > -1) {
       state.selectedProductsList[_i].count += 1
     } else {
@@ -29,9 +31,11 @@ export const mutations = {
     }
   },
   excludePieceFromACart: (state, payload) => {
-    const _i = state.selectedProductsList.indexOf(({ id }) => {
-      return id === payload
-    })
+    const _i = state.selectedProductsList
+      .map((item) => {
+        return item.id
+      })
+      .indexOf(payload)
     if (_i > -1) {
       if (state.selectedProductsList[_i].count === 1) {
         state.selectedProductsList.splice(_i, 1)
@@ -41,9 +45,11 @@ export const mutations = {
     }
   },
   removeFromACart: (state, payload) => {
-    const _i = state.selectedProductsList.indexOf(({ id }) => {
-      return id === payload
-    })
+    const _i = state.selectedProductsList
+      .map((item) => {
+        return item.id
+      })
+      .indexOf(payload)
     if (_i > -1) {
       state.selectedProductsList.splice(_i, 1)
     }

@@ -2,3 +2,13 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+.v-cart-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  background-color: dimgray;
+  padding: 10px;
+  .item {
+    margin-left: 5px;
+  }
+}

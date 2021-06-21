@@ -49,6 +49,24 @@ export default {
   },
   computed: {
     ...mapGetters({ selectedProductsList: 'cart/selectedProductsList' }),
+    isAddedToACart() {
+      const _self = this
+      return function (id) {
+        return _self.countProductsInACart(id) > 0
+      }
+    },
+    countProductsInACart() {
+      const _self = this
+      return function (_id) {
+        return _self.selectedProductsList
+          .filter(({ id }) => {
+            return _id === id
+          })
+          .map(({ count }) => {
+            return count
+          })[0]
+      }
+    },
   },
   methods: {
     ...mapMutations({
@@ -56,14 +74,6 @@ export default {
       excludePieceFromACart: 'cart/excludePieceFromACart',
       addToCart: 'cart/addToCart',
     }),
-    isAddedToACart(id) {
-      return this.countProductsInACart(id) > 0
-    },
-    countProductsInACart(id) {
-      return this.selectedProductsList.filter(({ _id }) => {
-        return _id === id
-      }).length
-    },
   },
 }
 </script>

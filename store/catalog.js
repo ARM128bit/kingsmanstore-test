@@ -5,6 +5,9 @@ export const state = () => ({
   selectedCategories: [],
 })
 export const getters = {
+  allProducts: (state) => {
+    return state.productsList
+  },
   productsList: (state) => {
     return state.productsList.filter(function (item) {
       return this.length === 0 || this.includes(item.category)
